@@ -1,13 +1,13 @@
-package com.maikbasel.hexjavamoduledemo;
+package com.maikbasel.hexarchjavademo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HexJavaModuleDemoApplication {
+public class HexArchJavaDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HexJavaModuleDemoApplication.class, args);
+        SpringApplication.run(HexArchJavaDemoApplication.class, args);
     }
 
 }
