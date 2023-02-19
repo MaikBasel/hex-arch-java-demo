@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 class FooEntity {
@@ -13,4 +15,6 @@ class FooEntity {
     @GeneratedValue
     private Long id;
     private String name;
+    private String uuid;
+    private LocalDateTime time;
 }

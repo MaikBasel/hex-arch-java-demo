@@ -7,22 +7,36 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.With;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.UUID;
+
 @ToString
-@EqualsAndHashCode
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(callSuper = false)
 public class Foo {
 
     @Getter
-    private Long id;
+    private final Long id;
     @With
     @Getter
     private final String name;
+    @With
+    @Getter
+    private final UUID uuid;
+    @With
+    @Getter
+    private LocalDateTime time;
 
-    public static Foo withoutId(String name) {
-        return new Foo(null, name);
+    public static Foo withoutId(String name, UUID uuid, LocalDateTime time) {
+        if (time.toLocalTime().isBefore(LocalTime.of(21, 0))) {
+            throw new IllegalFooCreationTime("Foo must not be created before 9 pm!");
+        }
+
+        return new Foo(null, name, uuid, time);
     }
 
-    public static Foo withId(Long id, String name) {
-        return new Foo(id, name);
+    public static Foo withId(Long id, String name, UUID uuid, LocalDateTime time) {
+        return new Foo(id, name, uuid, time);
     }
 }

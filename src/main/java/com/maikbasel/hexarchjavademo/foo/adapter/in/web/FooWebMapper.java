@@ -1,11 +1,12 @@
 package com.maikbasel.hexarchjavademo.foo.adapter.in.web;
 
-import com.maikbasel.hexarchjavademo.foo.domain.Foo;
+import com.maikbasel.hexarchjavademo.foo.application.port.driving.CreateFooCommand;
 import org.springframework.stereotype.Component;
 
 @Component
 class FooWebMapper {
-    public Foo toFoo(CreateFooRequest createFooRequest) {
-        return Foo.withoutId(createFooRequest.getName());
+
+    public CreateFooCommand toFooCommand(CreateFooRequest createFooRequest) {
+        return new CreateFooCommand(createFooRequest.getName());
     }
 }
