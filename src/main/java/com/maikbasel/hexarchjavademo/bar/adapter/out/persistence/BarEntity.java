@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.bar.adapter.driven.persistence;
+package com.maikbasel.hexarchjavademo.bar.adapter.out.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

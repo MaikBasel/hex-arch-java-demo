@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.bar.adapter.driven.persistence;
+package com.maikbasel.hexarchjavademo.bar.adapter.out.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

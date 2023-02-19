@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.foo.adapter.driving.web;
+package com.maikbasel.hexarchjavademo.foo.adapter.in.web;
 
 import com.maikbasel.hexarchjavademo.foo.domain.Foo;
 import org.springframework.stereotype.Component;

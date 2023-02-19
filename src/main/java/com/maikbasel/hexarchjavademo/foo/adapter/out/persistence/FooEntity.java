@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.foo.adapter.driven.persistence;
+package com.maikbasel.hexarchjavademo.foo.adapter.out.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

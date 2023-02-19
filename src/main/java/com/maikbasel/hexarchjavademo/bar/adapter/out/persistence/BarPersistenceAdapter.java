@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.bar.adapter.driven.persistence;
+package com.maikbasel.hexarchjavademo.bar.adapter.out.persistence;
 
 import com.maikbasel.hexarchjavademo.bar.application.port.driven.SaveBarPort;
 import com.maikbasel.hexarchjavademo.bar.domain.Bar;

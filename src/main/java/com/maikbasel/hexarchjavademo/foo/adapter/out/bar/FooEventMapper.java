@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.foo.adapter.driven.bar;
+package com.maikbasel.hexarchjavademo.foo.adapter.out.bar;
 
 import com.maikbasel.hexarchjavademo.common.FooCreatedDomainEvent;
 import com.maikbasel.hexarchjavademo.foo.domain.Foo;

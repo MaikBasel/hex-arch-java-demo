@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.foo.adapter.driven.persistence;
+package com.maikbasel.hexarchjavademo.foo.adapter.out.persistence;
 
 import com.maikbasel.hexarchjavademo.foo.domain.Foo;
 import org.springframework.stereotype.Component;

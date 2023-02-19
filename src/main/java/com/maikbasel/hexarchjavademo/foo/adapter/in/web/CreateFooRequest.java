@@ -1,4 +1,4 @@
-package com.maikbasel.hexarchjavademo.foo.adapter.driving.web;
+package com.maikbasel.hexarchjavademo.foo.adapter.in.web;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
