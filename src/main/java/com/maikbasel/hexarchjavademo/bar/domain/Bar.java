@@ -10,15 +10,15 @@ import lombok.Getter;
 public class Bar {
 
     @Getter
-    private BarId id;
+    private Long id;
     @Getter
-    private final String name;
+    private final String fooName;
 
-    public static Bar withId(BarId id, String name) {
-        return new Bar(id, name);
+    public static Bar withId(Long id, String fooName) {
+        return new Bar(id, fooName);
     }
 
-    public static Bar withoutId(String name) {
-        return new Bar(null, name);
+    public static Bar withoutId(String fooName) {
+        return new Bar(null, fooName);
     }
 }

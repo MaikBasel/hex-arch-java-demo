@@ -15,6 +15,8 @@ class BarService implements CreateBarWhenFooIsCreatedUseCase {
 
     @Override
     public Bar createBar(FooCreatedEvent event) {
-        throw new IllegalStateException("Not yet implemented");
+        var bar = Bar.withoutId(event.getName());
+
+        return saveBarPort.saveBar(bar);
     }
 }

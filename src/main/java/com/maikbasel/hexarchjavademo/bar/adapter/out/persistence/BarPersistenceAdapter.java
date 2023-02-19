@@ -9,10 +9,15 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 class BarPersistenceAdapter implements SaveBarPort {
 
+    private final BarPersistenceMapper barPersistenceMapper;
     private final BarDao barDao;
 
     @Override
     public Bar saveBar(Bar bar) {
-        throw new IllegalStateException("Not implemented yet");
+        BarEntity newBar = barPersistenceMapper.toBarEntity(bar);
+
+        var persistedBar = barDao.save(newBar);
+
+        return barPersistenceMapper.toBar(persistedBar);
     }
 }
