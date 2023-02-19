@@ -5,6 +5,7 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
 @AnalyzeClasses(
@@ -20,6 +21,7 @@ import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 )
 // All ArchRule are annotated with @SuppressWarnings("unused") as these are in fact not unused, but rather tested
 // against by the ArchUnit Framework as long as they are marked with the @ArchTest annotation.
+// TODO Make reusable for other modules.
 class FooHexagonalArchitectureTest {
 
     private static final String INPUT_ADAPTER = "Input Adapter";
@@ -67,6 +69,15 @@ class FooHexagonalArchitectureTest {
 
     @ArchTest
     @SuppressWarnings("unused")
+    static final ArchRule adapter = classes()
+            .that().resideInAnyPackage("..adapter..")
+            .should().bePackagePrivate()
+            .orShould().bePrivate()
+            .because("Adapter classes and their DTOs should be initialized and executed by the Spring Framework. " +
+                    "There is no reason to make them publicly available.");
+
+    @ArchTest
+    @SuppressWarnings("unused")
     static final ArchRule ports= layeredArchitecture()
             .consideringOnlyDependenciesInAnyPackage("com.maikbasel.hexarchjavademo")
             .layer(INPUT_ADAPTER).definedBy("..adapter.in..")
@@ -82,6 +93,14 @@ class FooHexagonalArchitectureTest {
 
     @ArchTest
     @SuppressWarnings("unused")
+    static final ArchRule port = classes()
+            .that().resideInAnyPackage("..application.port..")
+            .should().bePublic()
+            .because("The whole point of the Port interfaces and their DTOs declared here is to be publicly available, " +
+                    "as they are the only way from and to the application's core logic.");
+
+    @ArchTest
+    @SuppressWarnings("unused")
     static final ArchRule applicationServices = layeredArchitecture()
             .consideringOnlyDependenciesInAnyPackage("com.maikbasel.hexarchjavademo")
             .layer(DOMAIN).definedBy("..domain..")
@@ -92,6 +111,14 @@ class FooHexagonalArchitectureTest {
                     "application either from or to the Domain Entities. They will also direct those entities to use " +
                     "their Critical Business Rules to achieve the goals of the Use-Case implemented by the Service. " +
                     "If this requires them to communicate with external systems they should do so via a Driven Port.");
+
+    @ArchTest
+    @SuppressWarnings("unused")
+    static final ArchRule applicationService = classes()
+            .that().resideInAnyPackage("..application.service..")
+            .should().bePackagePrivate()
+            .orShould().bePrivate()
+            .because("The application services should only be called via the public Use-Case interface they implement.");
 
     @ArchTest
     @SuppressWarnings("unused")
