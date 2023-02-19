@@ -4,6 +4,7 @@ import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
+import org.springframework.stereotype.Repository;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
@@ -71,6 +72,7 @@ class BarHexagonalArchitectureTest {
     @SuppressWarnings("unused")
     static final ArchRule adapter = classes()
             .that().resideInAnyPackage("..adapter..")
+            .and().areNotAnnotatedWith(Repository.class)
             .should().bePackagePrivate()
             .orShould().bePrivate()
             .because("Adapter classes and their DTOs should be initialized and executed by the Spring Framework. " +
