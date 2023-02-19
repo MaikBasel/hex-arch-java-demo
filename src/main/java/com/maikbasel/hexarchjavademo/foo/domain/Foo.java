@@ -1,13 +1,20 @@
 package com.maikbasel.hexarchjavademo.foo.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.With;
 
+@ToString
 @EqualsAndHashCode
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Foo {
 
     @Getter
     private Long id;
+    @With
     @Getter
     private final String name;
 
