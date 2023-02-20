@@ -34,7 +34,7 @@ class FooTest {
         var thrown = Assertions.catchException(() -> Foo.withoutId("test", inputUuid, inputDateTime));
 
         Assertions.assertThat(thrown)
-                .isInstanceOf(IllegalFooCreationTime.class)
+                .isInstanceOf(IllegalFooCreationTimeException.class)
                 .hasMessage("Foo must not be created before 9 pm!");
     }
 }

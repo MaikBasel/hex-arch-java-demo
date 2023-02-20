@@ -30,7 +30,7 @@ public class Foo {
 
     public static Foo withoutId(String name, UUID uuid, LocalDateTime time) {
         if (time.toLocalTime().isBefore(LocalTime.of(21, 0))) {
-            throw new IllegalFooCreationTime("Foo must not be created before 9 pm!");
+            throw new IllegalFooCreationTimeException();
         }
 
         return new Foo(null, name, uuid, time);

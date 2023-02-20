@@ -2,8 +2,10 @@ package com.maikbasel.hexarchjavademo.foo.adapter.in.web;
 
 import com.maikbasel.hexarchjavademo.foo.application.port.driving.CreateFooUseCase;
 import com.maikbasel.hexarchjavademo.foo.domain.FooCreationFailure;
+import com.maikbasel.hexarchjavademo.foo.domain.IllegalFooCreationTimeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,5 +36,12 @@ class FooController {
             var fooErrorResponse  = new FooErrorResponse(failure.getMessageTemplate().formatted(request.getName()));
             return ResponseEntity.badRequest().body(fooErrorResponse);
         }
+    }
+
+    @ExceptionHandler(IllegalFooCreationTimeException.class)
+    public ResponseEntity<FooErrorResponse> handleIllegalFooCreationTime(IllegalFooCreationTimeException e) {
+        var errorResponse = new FooErrorResponse(e.getMessage());
+
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 }
